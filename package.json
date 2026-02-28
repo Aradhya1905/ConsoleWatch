@@ -1,0 +1,153 @@
+{
+  "name": "consolewatch",
+  "displayName": "ConsoleWatch",
+  "description": "Real-time debugging console for React/React Native - see logs, network requests, and more directly in VSCode",
+  "version": "0.1.0",
+  "publisher": "consolewatch",
+  "icon": "media/terminal.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/consolewatch"
+  },
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "react",
+    "react-native",
+    "debugging",
+    "console",
+    "network",
+    "reactotron"
+  ],
+  "activationEvents": [
+    "onCommand:consolewatch.openPanel",
+    "onCommand:consolewatch.clear",
+    "onCommand:consolewatch.toggleServer",
+    "onView:consolewatch.view"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "consolewatch",
+          "title": "ConsoleWatch",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "consolewatch": [
+        {
+          "id": "consolewatch.view",
+          "name": "ConsoleWatch"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "consolewatch.openPanel",
+        "title": "ConsoleWatch: Open Panel",
+        "icon": "$(debug-console)"
+      },
+      {
+        "command": "consolewatch.clear",
+        "title": "ConsoleWatch: Clear All Events"
+      },
+      {
+        "command": "consolewatch.toggleServer",
+        "title": "ConsoleWatch: Toggle Server"
+      },
+      {
+        "command": "consolewatch.openSettings",
+        "title": "ConsoleWatch: Open Settings",
+        "icon": "$(gear)"
+      }
+    ],
+    "configuration": {
+      "title": "ConsoleWatch",
+      "properties": {
+        "consolewatch.port": {
+          "type": "number",
+          "default": 9090,
+          "minimum": 1024,
+          "maximum": 65535,
+          "description": "WebSocket server port"
+        },
+        "consolewatch.host": {
+          "type": "string",
+          "default": "localhost",
+          "enum": ["localhost", "0.0.0.0"],
+          "enumDescriptions": [
+            "Only accept connections from this machine",
+            "Accept connections from any network interface"
+          ],
+          "description": "Server bind address"
+        },
+        "consolewatch.maxConnections": {
+          "type": "number",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Maximum simultaneous client connections"
+        },
+        "consolewatch.maxEvents": {
+          "type": "number",
+          "default": 1000,
+          "minimum": 100,
+          "maximum": 10000,
+          "description": "Maximum events kept in memory"
+        },
+        "consolewatch.autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the server when the extension activates"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "consolewatch.openPanel",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build:prod",
+    "clean": "node scripts/clean.js",
+    "build": "npm run clean && node esbuild.config.js",
+    "build:prod": "npm run clean && node esbuild.config.js --prod",
+    "watch": "node esbuild.config.js --watch",
+    "build:css": "npx @tailwindcss/cli -i ./src/webview/styles/index.css -o ./dist/webview/styles.css",
+    "package": "npm run build:prod && npx @vscode/vsce package --no-dependencies",
+    "lint": "eslint src --ext ts,tsx"
+  },
+  "dependencies": {
+    "lucide-react": "^0.562.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/vscode": "^1.96.0",
+    "@types/ws": "^8.5.13",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.24.0",
+    "postcss": "^8.4.49",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "zustand": "^5.0.0"
+  }
+}

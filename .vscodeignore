@@ -1,0 +1,32 @@
+# Development files
+.vscode/**
+.claude/**
+src/**
+scripts/**
+node_modules/**
+docs_plans/**
+
+# Config files
+.gitignore
+.eslintrc*
+.prettierrc*
+tsconfig.json
+tsconfig.webview.json
+tailwind.config.js
+postcss.config.js
+esbuild.config.js
+
+# Package files
+package-lock.json
+*.vsix
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+__tests__/**
+
+# Other
+*.md
+!README.md
+.DS_Store
+*.log
