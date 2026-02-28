@@ -1,29 +1,28 @@
 {
   "name": "consolewatch",
   "displayName": "ConsoleWatch",
-  "description": "Real-time debugging console for React/React Native - see logs, network requests, and more directly in VSCode",
+  "description": "Real-time debugging console — stream logs, network requests, and state changes from any app directly into VS Code",
   "version": "0.1.0",
-  "publisher": "consolewatch",
+  "publisher": "KarthikAradhya",
   "icon": "media/terminal.png",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/user/consolewatch"
+    "url": "https://github.com/Aradhya1905/ConsoleWatch"
   },
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
     "Debuggers",
-    "Other"
+    "Visualization"
   ],
   "keywords": [
-    "react",
-    "react-native",
     "debugging",
     "console",
     "network",
-    "reactotron"
+    "react-native",
+    "websocket"
   ],
   "activationEvents": [
     "onCommand:consolewatch.openPanel",
