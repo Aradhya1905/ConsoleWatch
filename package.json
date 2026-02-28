@@ -1,6 +1,6 @@
 {
   "name": "consolewatch",
-  "displayName": "ConsoleWatch",
+  "displayName": "Console Watch",
   "description": "Real-time debugging console — stream logs, network requests, and state changes from any app directly into VS Code",
   "version": "0.1.0",
   "publisher": "KarthikAradhya",
